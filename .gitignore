@@ -1,0 +1,17 @@
+# cloned repo
+cloned_input_repo/
+
+# python
+__pycache__/
+*.pyc
+*.pyo
+.python-version
+
+# virtual environment
+.venv/
+
+# mac
+.DS_Store
+
+# chroma (vector db we'll add later)
+chroma_db/

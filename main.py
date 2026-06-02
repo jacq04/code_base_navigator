@@ -1,6 +1,14 @@
-from config import * 
-from git import Repo
-from codebase_navigator.scanner import * 
+from config import *
+from core.scanner import clone_repo
+from core.RAG.chunking import get_python_files, chunk_file
 
 input_repo = input("Provide your GitHub repository URL:")
-clone_repo(input_repo) 
+clone_repo(input_repo)
+
+python_files = get_python_files(cloned_input_repo)
+all_chunks = []
+for file in python_files:
+    chunks = chunk_file(file)
+    all_chunks.extend(chunks)
+
+print(f"Total chunks: {len(all_chunks)}")
