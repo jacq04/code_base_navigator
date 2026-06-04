@@ -17,12 +17,17 @@ def get_python_files(repo_path):
 def chunk_file(file_path):
     """
     Parses a Python file using ast and returns a list of chunks,
-    where each chunk is one function or class.
+    where each chunk is a dict with the code and metadata.
     """
     source = Path(file_path).read_text()
     tree = ast.parse(source)
     chunks = []
     for node in ast.walk(tree):
         if isinstance(node, (ast.FunctionDef, ast.ClassDef)):
-            chunks.append(ast.get_source_segment(source, node))
+            chunks.append({
+                "code": ast.get_source_segment(source, node),
+                "name": node.name,
+                "type": "function" if isinstance(node, ast.FunctionDef) else "class",
+                "file": str(file_path)
+            })
     return chunks
