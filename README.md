@@ -23,3 +23,7 @@ flowchart TD
     F --> I[Agent 4: Architecture Agent]
     F --> J[Agent 5: Code Flow Agent]
     F --> K[Agent 6: Feature Agent]
+
+## Build into 
+- RAG: chromaDB fully (chunking python using ast, stored and embeddign usign chromaDB sentence-transformers)
+- Agents: created with Langchain connected to tools using mcp
